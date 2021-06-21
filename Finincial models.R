@@ -355,14 +355,55 @@ summary(ur.df(data$return, selectlags = "AIC", type ="trend"))  #cant rejct Ho
 
 arma <- data %>% # possible combinations of AR(p) and MA(q) orders (require up to 5,5 but just added extra.)
   model(
-    
+    arma00 = ARIMA(return ~ 1 + pdq(0, 0, 0) + PDQ(0, 0, 0)),
+    arma10 = ARIMA(return ~ 1 + pdq(1, 0, 0) + PDQ(0, 0, 0)),
+    arma20 = ARIMA(return ~ 1 + pdq(2, 0, 0) + PDQ(0, 0, 0)),
+    arma30 = ARIMA(return ~ 1 + pdq(3, 0, 0) + PDQ(0, 0, 0)),
+    arma40 = ARIMA(return ~ 1 + pdq(4, 0, 0) + PDQ(0, 0, 0)),
+    arma50 = ARIMA(return ~ 1 + pdq(5, 0, 0) + PDQ(0, 0, 0)),
+    arma60 = ARIMA(return ~ 1 + pdq(6, 0, 0) + PDQ(0, 0, 0)),
+    arma01 = ARIMA(return ~ 1 + pdq(0, 0, 1) + PDQ(0, 0, 0)),
+    arma11 = ARIMA(return ~ 1 + pdq(1, 0, 1) + PDQ(0, 0, 0)),
+    arma21 = ARIMA(return ~ 1 + pdq(2, 0, 1) + PDQ(0, 0, 0)),
+    arma31 = ARIMA(return ~ 1 + pdq(3, 0, 1) + PDQ(0, 0, 0)),
+    arma41 = ARIMA(return ~ 1 + pdq(4, 0, 1) + PDQ(0, 0, 0)),
+    arma51 = ARIMA(return ~ 1 + pdq(5, 0, 1) + PDQ(0, 0, 0)),
+    arma61 = ARIMA(return ~ 1 + pdq(6, 0, 1) + PDQ(0, 0, 0)),
+    arma02 = ARIMA(return ~ 1 + pdq(0, 0, 2) + PDQ(0, 0, 0)),
+    arma12 = ARIMA(return ~ 1 + pdq(1, 0, 2) + PDQ(0, 0, 0)),
+    arma22 = ARIMA(return ~ 1 + pdq(2, 0, 2) + PDQ(0, 0, 0)),
+    arma32 = ARIMA(return ~ 1 + pdq(3, 0, 2) + PDQ(0, 0, 0)),
+    arma42 = ARIMA(return ~ 1 + pdq(4, 0, 2) + PDQ(0, 0, 0)),
+    arma52 = ARIMA(return ~ 1 + pdq(5, 0, 2) + PDQ(0, 0, 0)),
+    arma62 = ARIMA(return ~ 1 + pdq(6, 0, 2) + PDQ(0, 0, 0)),
+    arma03 = ARIMA(return ~ 1 + pdq(0, 0, 3) + PDQ(0, 0, 0)),
+    arma13 = ARIMA(return ~ 1 + pdq(1, 0, 3) + PDQ(0, 0, 0)),
+    arma23 = ARIMA(return ~ 1 + pdq(2, 0, 3) + PDQ(0, 0, 0)),
+    arma33 = ARIMA(return ~ 1 + pdq(3, 0, 3) + PDQ(0, 0, 0)),
+    arma43 = ARIMA(return ~ 1 + pdq(4, 0, 3) + PDQ(0, 0, 0)),
+    arma53 = ARIMA(return ~ 1 + pdq(5, 0, 3) + PDQ(0, 0, 0)),
+    arma63 = ARIMA(return ~ 1 + pdq(6, 0, 3) + PDQ(0, 0, 0)),
+    arma04 = ARIMA(return ~ 1 + pdq(0, 0, 4) + PDQ(0, 0, 0)),
+    arma14 = ARIMA(return ~ 1 + pdq(1, 0, 4) + PDQ(0, 0, 0)),
+    arma24 = ARIMA(return ~ 1 + pdq(2, 0, 4) + PDQ(0, 0, 0)),
+    arma34 = ARIMA(return ~ 1 + pdq(3, 0, 4) + PDQ(0, 0, 0)),
+    arma44 = ARIMA(return ~ 1 + pdq(4, 0, 4) + PDQ(0, 0, 0)),
+    arma54 = ARIMA(return ~ 1 + pdq(5, 0, 4) + PDQ(0, 0, 0)),
+    arma64 = ARIMA(return ~ 1 + pdq(6, 0, 4) + PDQ(0, 0, 0)),
     arma05 = ARIMA(return ~ 1 + pdq(0, 0, 5) + PDQ(0, 0, 0)),
-    arma51 = ARIMA(return ~ 1 + pdq(1, 0, 5) + PDQ(0, 0, 0)),
-    arma52 = ARIMA(return ~ 1 + pdq(2, 0, 5) + PDQ(0, 0, 0)),
-    arma53 = ARIMA(return ~ 1 + pdq(3, 0, 5) + PDQ(0, 0, 0)),
-    arma54 = ARIMA(return ~ 1 + pdq(4, 0, 5) + PDQ(0, 0, 0)),
+    arma15 = ARIMA(return ~ 1 + pdq(1, 0, 5) + PDQ(0, 0, 0)),
+    arma25 = ARIMA(return ~ 1 + pdq(2, 0, 5) + PDQ(0, 0, 0)),
+    arma35 = ARIMA(return ~ 1 + pdq(3, 0, 5) + PDQ(0, 0, 0)),
+    arma45 = ARIMA(return ~ 1 + pdq(4, 0, 5) + PDQ(0, 0, 0)),
     arma55 = ARIMA(return ~ 1 + pdq(5, 0, 5) + PDQ(0, 0, 0)),
-    
+    arma65 = ARIMA(return ~ 1 + pdq(6, 0, 5) + PDQ(0, 0, 0)),
+    arma06 = ARIMA(return ~ 1 + pdq(0, 0, 6) + PDQ(0, 0, 0)),
+    arma16 = ARIMA(return ~ 1 + pdq(1, 0, 6) + PDQ(0, 0, 0)),
+    arma26 = ARIMA(return ~ 1 + pdq(2, 0, 6) + PDQ(0, 0, 0)),
+    arma36 = ARIMA(return ~ 1 + pdq(3, 0, 6) + PDQ(0, 0, 0)),
+    arma46 = ARIMA(return ~ 1 + pdq(4, 0, 6) + PDQ(0, 0, 0)),
+    arma56 = ARIMA(return ~ 1 + pdq(5, 0, 6) + PDQ(0, 0, 0)),
+    arma66 = ARIMA(return ~ 1 + pdq(6, 0, 6) + PDQ(0, 0, 0)),
   )
 
 glance(arma)
@@ -371,15 +412,15 @@ min_aram <- min_aram[[".model"]]
 min_aram # prints lowest value of AiC arma model to use.
 
 arma %>%
-  select(arma52) %>%
+  select(arma54) %>%
   fabletools::report() 
 
 min_data <- data %>% #' ARMA model arma 52 for me.
-  model(ar52 = ARIMA(return ~ 1 + pdq(5, 0, 2) + PDQ(0, 0, 0)))
+  model(ar54 = ARIMA(return ~ 1 + pdq(5, 0, 4) + PDQ(0, 0, 0)))
 
 
 p <- min_data %>% #  ACF of residuals
-  select(ar52) %>% # 
+  select(ar54) %>% # 
   residuals() %>%
   select(.resid) %>%
   feasts::ACF(lag_max = 20) %>% # for visual perception used more lags.
@@ -389,7 +430,7 @@ p <- min_data %>% #  ACF of residuals
 p
 
 p <- min_data %>%   # ACF of residuals^2
-  select(ar52) %>%
+  select(ar54) %>%
   residuals() %>%
   mutate(.resid2 = (.resid)^2) %>%
   select(.resid2) %>%
@@ -403,14 +444,14 @@ p # highly significant autocorrelation b/w the squares of residuals
 #----- arch and garch specification normal distrib. ARMA 52 order  and GARCH order 50
 
 specARCH <- ugarchspec(                            
-  mean.model         = list(armaOrder = c(5, 2)),
+  mean.model         = list(armaOrder = c(5, 4)),
   variance.model     = list(model = "sGARCH", garchOrder = c(5, 0)),
   distribution.model = "norm")
 
 ARCH_norm <- ugarchfit(specARCH, data$return) 
 ARCH_norm
 
-sum(ARCH_norm@fit$matcoef[10:14, 1])  # sum of coefficients all alphas. is < 1
+sum(ARCH_norm@fit$matcoef[12:16, 1])  # sum of coefficients all alphas. is < 1
 
 resid_ARCH <- stats::resid(ARCH_norm@fit)
 con_var_ARCH <- c(ARCH_norm@fit$var)
@@ -425,7 +466,7 @@ Box.test(resid_stand_ARCH^2, lag = 10, type = "Ljung-Box")  # No auto corr
 #----- arch and garch specification std t-distrib.
 
 specARCH_1 <- ugarchspec(                            
-  mean.model         = list(armaOrder = c(5, 2)),
+  mean.model         = list(armaOrder = c(5, 4)),
   variance.model     = list(model = "sGARCH", garchOrder = c(5, 0)),
   distribution.model = "std")
 
@@ -433,7 +474,7 @@ specARCH_1 <- ugarchspec(
 ARCH_std <- ugarchfit(specARCH_1, data$return) 
 ARCH_std
 
-sum(ARCH_std@fit$matcoef[10:14, 1])  # sum of coefficients all alphas. < 1
+sum(ARCH_std@fit$matcoef[12:16, 1])  # sum of coefficients all alphas. < 1
 
 resid_ARCH <- stats::resid(ARCH_std@fit)
 con_var_ARCH <- c(ARCH_std@fit$var)
@@ -448,17 +489,22 @@ Box.test(resid_stand_ARCH^2, lag = 10, type = "Ljung-Box")  # No auto corr
 # no higher order arch effect left
 
 ##--------------------------------------- 3. Does your result support the premise of volatility clustering?
-
-# Norm distrib and t-distrib
+# Norm distrib
 # all Alpha terms are significant
-# mu ar1 and ar4 terms are non-significant
+# mu and ar1, ar2, ar3, ar4, terms are non-significant. AR5 is siginficant. indicating drop of 6%
+# persistance in conditional variance equation
+# shows volatility cluster effect or arch effects (kurtosis value)
+
+# Std T-distrib
+# all appha terms are signigicant
+# mu and all ar terms are non-significant
 # persistance in conditional variance equation
 # shows volatility cluster effect or arch effects (kurtosis value)
 
 ##--------------------------------------- 4. GJR-GARCH(1,1) and check for leverage effect
 
 specARCH1 <- ugarchspec(                            
-  mean.model         = list(armaOrder = c(5, 2)),
+  mean.model         = list(armaOrder = c(5, 4)),
   variance.model     = list(model = "gjrGARCH", garchOrder = c(1, 1)),
   distribution.model = "norm")
 
@@ -477,7 +523,7 @@ if((GJR_ARCH@fit$matcoef[12, 1]) > 0){
 ##--------------------------------------- 5.   EGARCH(1,1) what inferred?
 
 specEARCH1 <- ugarchspec(
-  mean.model = list(armaOrder = c(5, 2)),
+  mean.model = list(armaOrder = c(5, 4)),
   variance.model = list(model = "eGARCH", garchOrder = c(1, 1)),
   distribution.model = "norm"
 )
@@ -490,8 +536,8 @@ E_GARCH
 # alpha1 and gamma1 values
 # 0.102486   0.137439
 # aplha1+gamma1 = +ve shock and -aplha1+gamma1 = -ve shock. (arch effects or leverage effects)
-# 0.102486 + 0.137439 = 0.239925 23% of shock enters this periods standardized residual condit varince.
-# -0.102486 + 0.137439 = 0.034953 3% of shock enters this periods standardized residual condit varince.
+# alpha + beta = 0.239925 23% of shock enters this periods standardized residual condit varince.
+# -alpha + beta = 0.034953 3% of shock enters this periods standardized residual condit varince.
 
 ############################ Q 2  Downside Risk Modeling
 
@@ -522,28 +568,28 @@ for(i in 1001:(dim(data)[1])){ # construct quantiles
 }
 
 spec1 <- ugarchspec(variance.model = list(model = "sGARCH", garchOrder = c(1, 1)), 
-                    mean.model=list(armaOrder=c(5,2), include.mean = TRUE), 
+                    mean.model=list(armaOrder=c(5,4), include.mean = TRUE), 
                     distribution="norm") 
 
 roll1 <- ugarchroll(spec1, data[,"return"], n.start=1000, refit.window = "moving", 
                     VaR.alpha = c( 0.01))
 
 spec2 <- ugarchspec(variance.model = list(model = "sGARCH", garchOrder = c(1, 1)), 
-                    mean.model=list(armaOrder=c(5,2), include.mean = TRUE), 
+                    mean.model=list(armaOrder=c(5,4), include.mean = TRUE), 
                     distribution="sstd")
 
 roll2 <- ugarchroll(spec2, data[, "return"], n.start = 1000, refit.window = "moving", 
                     VaR.alpha = c(0.01)) 
 
 spec3 <- ugarchspec(variance.model = list(model = "gjrGARCH", garchOrder = c(1, 1)), 
-                    mean.model=list(armaOrder=c(5,2), include.mean = TRUE), 
+                    mean.model=list(armaOrder=c(5,4), include.mean = TRUE), 
                     distribution="norm")
 
 roll3 <- ugarchroll(spec3, data[,"return"], n.start=1000, refit.window = "moving", 
                     VaR.alpha = c(0.01))
 
 spec4 <- ugarchspec(variance.model = list(model = "gjrGARCH", garchOrder = c(1, 1)), 
-                    mean.model=list(armaOrder=c(5,2), include.mean = TRUE), 
+                    mean.model=list(armaOrder=c(5,4), include.mean = TRUE), 
                     distribution="sstd")
 
 roll4 <- ugarchroll(spec4, data[,"return"], n.start = 1000, refit.window = "moving", 
@@ -594,6 +640,6 @@ rownames(BT99Tab) <- c("Historical Simulation",
                        "Normal ARMA(5,1)-GJR-GARCH(1,1)", 
                        "Student-t ARMA(5,1)-GJR-GARCH(1,1)")
 
-stargazer::stargazer(BT99Tab, digits=4)
+
 
 BT99Tab
